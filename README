@@ -1,0 +1,3 @@
+demo = UrlsHandler(url_file, int)
+demo.verify2txt()
+demo.copy2txt()
