@@ -1,0 +1,5 @@
+http://www.douban.com
+error:
+# http://www.baidu.com/no
+# http://www.douban.co/
+http://www.baidu.com
