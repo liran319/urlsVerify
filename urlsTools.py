@@ -3,7 +3,7 @@
 import os
 import urllib2
 
-url_file = r"urls.txt"
+# url_file = r"C:\Users\li_ran\Desktop\url"
 
 
 class UrlsHandler(object):
@@ -27,11 +27,11 @@ class UrlsHandler(object):
                     if int(response.getcode()) == 200 and redirected == line:
                         new_contentList.append(line)
                     else:
-                        print response.getcode()
+                        print line, str(response.getcode())
                         new_contentList.append("# " + line)
                 except Exception as e:
                     new_contentList.append("# " + line)
-                    print "ErrorInfo: ", e
+                    print "ErrorInfo: ", line, str(e)
             else:
                 new_contentList.append(line)
         file_open.close()
@@ -48,7 +48,7 @@ class UrlsHandler(object):
         """
         更新一个新的文本, 包含所有验证并且注释后的url
         """
-        new_file = os.path.splitext(url_file)[0] + "_filted.txt"
+        new_file = os.path.splitext(self.arg)[0] + "_filted.txt"
         file_writer = open(new_file, "w")
         new_content = '\r\n'.join(self.filter_content)
         file_writer.writelines(new_content)
@@ -58,7 +58,7 @@ class UrlsHandler(object):
         """
         更新一个新的文本文件, 包含所有可用url重复多次后的结果
         """
-        new_file = os.path.splitext(url_file)[0] + "_copy.txt"
+        new_file = os.path.splitext(self.arg)[0] + "_copy.txt"
         file_writer = open(new_file, "w")
         new_content = '\r\n'.join(self.copy_content)
         file_writer.writelines(new_content)
